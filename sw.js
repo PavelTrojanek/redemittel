@@ -1,5 +1,5 @@
 // Offline cache. Při změně aplikace zvyš verzi.
-const V = 'redemittel-v4';
+const V = 'redemittel-v5';
 const CORE = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png', 'icon-512.png'];
 const IMGS = [
   '1.jpg',
@@ -180,7 +180,7 @@ self.addEventListener('install', e => {
   self.skipWaiting();
 });
 self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))));
+  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('redemittel-') && k !== V).map(k => caches.delete(k)))));
   self.clients.claim();
 });
 self.addEventListener('fetch', e => {
