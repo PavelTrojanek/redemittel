@@ -319,7 +319,7 @@ function startSession(isFree){
 function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
 
 function tagHtml(c){ return c.t==='b2' ? '★ B2 navíc' : '📓 ze sešitu'; }
-const pic = c => `<img class="pic" src="img/${c.id}.jpg" alt="" width="112" height="112" decoding="async">`;
+const pic = c => `<img class="pic" src="${c.id}.jpg" alt="" width="112" height="112" decoding="async">`;
 function deSide(c){
   return pic(c) + `<div class="phrase" lang="de">${esc(c.de)}</div>${c.n?`<div class="note">${esc(c.n)}</div>`:''}` +
     `<div class="ex" lang="de"><b>z. B.</b>${esc(c.ex)}</div>`;
@@ -440,7 +440,7 @@ function renderList(){
       <span class="badge">${p ? 'přihr. '+p.b : 'nová'}</span>
       <div class="de" lang="de">${CATS[c.c].e} ${esc(c.de)}</div>
       <div class="cz">${esc(c.cz)}</div>
-      <div class="exl"><img class="pic" src="img/${c.id}.jpg" alt="" width="72" height="72" loading="lazy" style="width:72px;height:72px;border-radius:14px;float:left;margin:0 10px 4px 0">
+      <div class="exl"><img class="pic" src="${c.id}.jpg" alt="" width="72" height="72" loading="lazy" style="width:72px;height:72px;border-radius:14px;float:left;margin:0 10px 4px 0">
         <span lang="de">${c.n?esc(c.n)+' · ':''}z. B. ${esc(c.ex)}</span><br>${esc(c.x)}</div></div>`;
   }).join('') || '<p class="sub center">Nic nenalezeno.</p>';
 }
