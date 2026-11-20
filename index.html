@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Redemittel B2</title>
+<meta name="description" content="172 kartiček německých frází ke zkoušce Goethe B2 s Leitnerovým systémem.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Redemittel">
+<meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16181c" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-512.png">
+<style>
+:root{
+  --bg:#f6f5f1; --surface:#ffffff; --surface2:#efede7; --text:#1b1d21; --muted:#6b6f76; --line:#e2dfd7;
+  --accent:#1f4e79; --accent-text:#fff; --good:#2e7d4f; --bad:#c0392b; --shadow:0 1px 2px rgba(0,0,0,.06),0 6px 20px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#16181c; --surface:#1f2228; --surface2:#2a2e35; --text:#eceef1; --muted:#9aa0a8; --line:#33373f;
+    --accent:#6ea8dc; --accent-text:#0d1a26; --good:#4fbf7f; --bad:#ef6b5e; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text)}
+body{font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  min-height:100dvh;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.wrap{max-width:560px;margin:0 auto;padding:16px 16px 32px}
+.view{display:none}.view.on{display:block}
+h1{font-size:28px;line-height:1.15;margin:8px 0 4px;letter-spacing:-.02em}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:24px 0 8px;font-weight:600}
+.sub{color:var(--muted);margin:0 0 16px}
+.panel{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);padding:16px}
+.big{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.row{display:flex;gap:12px;align-items:center}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat small{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+.boxes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:16px}
+.bx{background:var(--surface2);border-radius:10px;padding:8px 4px;text-align:center}
+.bx b{display:block;font-size:18px}.bx span{font-size:11px;color:var(--muted)}
+.btn{display:block;width:100%;padding:16px;border-radius:14px;background:var(--accent);color:var(--accent-text);font-weight:600;font-size:17px;text-align:center}
+.btn:disabled{opacity:.4}
+.btn2{display:block;width:100%;padding:14px;border-radius:14px;background:var(--surface);box-shadow:var(--shadow);font-weight:500;text-align:left}
+.btn2 span{float:right;color:var(--muted)}
+.stack>*+*{margin-top:10px}
+.seg{display:flex;background:var(--surface2);border-radius:12px;padding:3px}
+.seg button{flex:1;padding:9px 4px;border-radius:9px;font-size:14px;font-weight:500;color:var(--muted)}
+.seg button.on{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:7px 11px;border-radius:999px;background:var(--surface);border:1.5px solid var(--line);font-size:14px}
+.chip.on{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 14%,var(--surface))}
+.label{font-size:14px;color:var(--muted);margin:14px 0 6px}
+.label:first-child{margin-top:0}
+.links{display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;font-size:14px}
+.links button{color:var(--accent);padding:4px 0}
+/* study */
+.top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.x{width:36px;height:36px;border-radius:50%;background:var(--surface);box-shadow:var(--shadow);font-size:18px;flex:none}
+.bar{flex:1;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.count{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:48px;text-align:right}
+.scene{perspective:1400px;margin:8px 0 16px}
+.card{position:relative;min-height:min(58dvh,440px);transform-style:preserve-3d;transition:transform .45s cubic-bezier(.3,.7,.3,1);cursor:pointer}
+.card.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surface);border-radius:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
+.face.back{transform:rotateY(180deg)}
+.band{display:flex;align-items:center;gap:8px;padding:10px 14px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--cc);background:color-mix(in srgb,var(--cc) 12%,var(--surface));border-left:5px solid var(--cc)}
+.band .num{margin-left:auto;font-variant-numeric:tabular-nums}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px 22px;gap:14px}
+.phrase{font-size:clamp(22px,6vw,28px);font-weight:650;line-height:1.25;letter-spacing:-.01em}
+.note{font-size:14px;color:var(--muted)}
+.ex{font-size:15px;font-style:italic;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;max-width:34em}
+.ex b{font-style:normal;color:var(--cc);font-size:12px;margin-right:4px}
+.foot{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;font-size:12px;color:var(--muted)}
+.say{font-size:20px;padding:4px 8px;border-radius:8px;background:var(--surface2)}
+.hint{font-size:13px;color:var(--muted)}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.answers button{padding:18px;border-radius:14px;font-weight:650;font-size:17px;color:#fff}
+.no{background:var(--bad)}.yes{background:var(--good)}
+@media (prefers-color-scheme: dark){.answers button{color:#111}}
+/* list */
+.search{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:inherit;margin-bottom:12px}
+.item{background:var(--surface);border-radius:12px;padding:12px 14px;border-left:4px solid var(--cc);margin-bottom:8px}
+.item .de{font-weight:600}.item .cz{color:var(--muted);font-size:15px}
+.item .exl{display:none;font-size:14px;font-style:italic;color:var(--muted);margin-top:6px}
+.item.open .exl{display:block}
+.badge{float:right;font-size:12px;padding:2px 8px;border-radius:999px;background:var(--surface2);color:var(--muted);margin-left:8px}
+/* help */
+.help p,.help li{margin:0 0 10px}
+.help table{width:100%;border-collapse:collapse;font-size:15px}
+.help td{padding:8px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+.center{text-align:center}
+.done-emoji{font-size:64px;margin:40px 0 8px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HOME -->
+<section class="view on" id="home">
+  <h1>Redemittel B2</h1>
+  <p class="sub">172 kartiček · Leitnerova krabička</p>
+  <div class="panel">
+    <div class="stats">
+      <div class="stat"><div class="big" id="sDue">0</div><small>k opakování dnes</small></div>
+      <div class="stat"><div class="big" id="sNew">0</div><small>nových zbývá</small></div>
+    </div>
+    <div class="boxes" id="boxes"></div>
+  </div>
+  <div class="stack" style="margin-top:16px">
+    <button class="btn" id="startBtn">Začít</button>
+    <button class="btn2" id="freeBtn">Volné procvičování <span>neposouvá karty</span></button>
+    <button class="btn2" id="listBtn">Přehled karet <span>hledat</span></button>
+    <button class="btn2" id="helpBtn">Jak se učit <span>tipy</span></button>
+  </div>
+
+  <h2>Nastavení</h2>
+  <div class="panel">
+    <div class="label">Směr</div>
+    <div class="seg" id="dirSeg">
+      <button data-v="de">DE → CZ</button><button data-v="cz">CZ → DE</button><button data-v="mix">Mix</button>
+    </div>
+    <div class="label">Karet v jedné dávce</div>
+    <div class="seg" id="sizeSeg">
+      <button data-v="10">10</button><button data-v="20">20</button><button data-v="30">30</button><button data-v="0">Vše</button>
+    </div>
+    <div class="label">Kategorie</div>
+    <div class="chips" id="cats"></div>
+  </div>
+  <div class="links">
+    <button id="expBtn">Zálohovat postup</button>
+    <button id="impBtn">Obnovit ze zálohy</button>
+    <button id="resetBtn">Začít znovu</button>
+    <input type="file" id="impFile" accept="application/json,.json" hidden>
+  </div>
+</section>
+
+<!-- STUDY -->
+<section class="view" id="study">
+  <div class="top">
+    <button class="x" id="quit" aria-label="Zavřít">✕</button>
+    <div class="bar"><i id="prog"></i></div>
+    <div class="count" id="cnt"></div>
+  </div>
+  <div class="scene"><div class="card" id="card">
+    <div class="face front" id="front"></div>
+    <div class="face back" id="back"></div>
+  </div></div>
+  <div id="ctrl"></div>
+</section>
+
+<!-- DONE -->
+<section class="view" id="done">
+  <div class="center">
+    <div class="done-emoji">🎉</div>
+    <h1>Hotovo!</h1>
+    <p class="sub" id="doneText"></p>
+  </div>
+  <div class="stack">
+    <button class="btn" id="homeBtn">Zpět na přehled</button>
+    <button class="btn2" id="againBtn" hidden>Pokračovat další dávkou</button>
+  </div>
+</section>
+
+<!-- LIST -->
+<section class="view" id="list">
+  <div class="top"><button class="x" data-home aria-label="Zpět">‹</button><h1 style="margin:0;font-size:22px">Přehled karet</h1></div>
+  <input class="search" id="q" type="search" placeholder="Hledat německy nebo česky…" autocomplete="off">
+  <div id="items"></div>
+</section>
+
+<!-- HELP -->
+<section class="view help" id="help">
+  <div class="top"><button class="x" data-home aria-label="Zpět">‹</button><h1 style="margin:0;font-size:22px">Jak se učit</h1></div>
+  <div class="panel">
+    <p><b>Krabička se 4 přihrádkami.</b> Všechny karty začínají v přihrádce 1. Když kartu umíš, posune se o přihrádku dál. Když ji neumíš, vrátí se do přihrádky 1.</p>
+    <table>
+      <tr><td>Přihrádka 1</td><td>každý den</td></tr>
+      <tr><td>Přihrádka 2</td><td>za 2–3 dny</td></tr>
+      <tr><td>Přihrádka 3</td><td>1× týdně</td></tr>
+      <tr><td>Přihrádka 4</td><td>1× za 2 týdny</td></tr>
+    </table>
+  </div>
+  <h2>Tipy</h2>
+  <div class="panel"><ul style="padding-left:18px;margin:0">
+    <li><b>Hraj obráceně (CZ → DE):</b> přečti českou stranu a nahlas řekni německou frázi. Přesně tohle budeš dělat u ústní zkoušky.</li>
+    <li><b>Vlastní věta:</b> ke každé kartě vymysli jednu větu ze svého života. Zapamatuješ si ji líp než cizí příklad.</li>
+    <li><b>Barevná hra:</b> vytáhni po jedné kartě z 💬 🤝 👍 🗣 a slož z nich krátkou diskusi.</li>
+    <li><b>Malé dávky:</b> raději 10 minut denně než hodinu v neděli. Začni třeba jen s jednou kategorií.</li>
+    <li><b>„→ sloveso na konec“</b> připomíná, že po dass, ob, wie, als ob, wenn jde sloveso na konec věty.</li>
+  </ul></div>
+  <h2>Pravděpodobnost s modálními slovesy</h2>
+  <div class="panel"><table>
+    <tr><td><b>könnte</b></td><td>≈ 30–50 %</td><td>vielleicht / möglicherweise</td></tr>
+    <tr><td><b>dürfte</b></td><td>≈ 75 %</td><td>vermutlich / wahrscheinlich</td></tr>
+    <tr><td><b>müsste</b></td><td>≈ 90 %</td><td>höchstwahrscheinlich</td></tr>
+    <tr><td><b>muss</b></td><td>≈ 100 %</td><td>bestimmt / mit Sicherheit</td></tr>
+  </table></div>
+  <h2>sollen × wollen</h2>
+  <div class="panel">
+    <p><b>Er soll reich sein.</b> = Prý je bohatý (říkají ostatní).</p>
+    <p style="margin:0"><b>Er will reich sein.</b> = Tvrdí o sobě, že je bohatý.</p>
+  </div>
+  <h2>Značky na kartách</h2>
+  <div class="panel"><p style="margin:0">📓 = fráze z tvého sešitu · ★ = doplněno navíc pro úroveň B2</p></div>
+</section>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const CARDS = [{"id":1,"c":"op","de":"Ich bin mir ziemlich sicher, dass …","n":"dass → sloveso na konec","t":"notebook","cz":"Jsem si docela jistý, že …","ex":"Ich bin mir ziemlich sicher, dass Reisen ins Weltall bald nichts Besonderes mehr sein werden."},{"id":2,"c":"op","de":"Ich bin der festen Überzeugung, dass …","n":"","t":"notebook","cz":"Jsem pevně přesvědčen, že …","ex":"Ich bin der festen Überzeugung, dass wir das Weltall weiter erforschen sollten."},{"id":3,"c":"op","de":"Ich bin zutiefst davon überzeugt, dass …","n":"","t":"notebook","cz":"Jsem hluboce přesvědčen o tom, že …","ex":"Ich bin zutiefst davon überzeugt, dass eine gute Firmenkultur zu besseren Ergebnissen führt."},{"id":4,"c":"op","de":"Ich bin keineswegs davon überzeugt, dass …","n":"silný nesouhlas","t":"notebook","cz":"Vůbec nejsem přesvědčen o tom, že …","ex":"Ich bin keineswegs davon überzeugt, dass mehr Kontrollen das Problem lösen."},{"id":5,"c":"op","de":"Niemand kann doch ernsthaft glauben, dass …","n":"ironie / silný nesouhlas","t":"notebook","cz":"Nikdo přece nemůže vážně věřit, že …","ex":"Niemand kann doch ernsthaft glauben, dass Steuerbetrug ein Kavaliersdelikt ist."},{"id":6,"c":"op","de":"Es glaubt doch wohl niemand wirklich, dass …","n":"","t":"notebook","cz":"Nikdo snad opravdu nevěří, že …","ex":"Es glaubt doch wohl niemand wirklich, dass wir noch mehr Geld in Flüge zum Mars stecken sollten."},{"id":7,"c":"op","de":"Meiner Meinung nach …","n":"po něm hned sloveso!","t":"b2","cz":"Podle mého názoru …","ex":"Meiner Meinung nach sollte man jede Regelverletzung ernst nehmen."},{"id":8,"c":"op","de":"Ich vertrete die Ansicht, dass …","n":"vertreten = zastávat","t":"b2","cz":"Zastávám názor, že …","ex":"Ich vertrete die Ansicht, dass die Arbeit auch Spaß machen muss."},{"id":9,"c":"op","de":"Ich halte es für richtig / falsch, dass …","n":"halten für + Akk","t":"b2","cz":"Považuji za správné / špatné, že …","ex":"Ich halte es für falsch, dass Platz für Fußgänger wegfällt, nur weil Autofahrer parken möchten."},{"id":10,"c":"op","de":"Aus eigener Erfahrung weiß ich, dass …","n":"","t":"notebook","cz":"Z vlastní zkušenosti vím, že …","ex":"Aus eigener Erfahrung weiß ich, dass es schwer ist, nur auf sich selbst zu schauen."},{"id":11,"c":"op","de":"Für mich steht fest, dass …","n":"","t":"b2","cz":"Pro mě je jasné, že …","ex":"Für mich steht fest, dass ich mich bei der Arbeit wohlfühlen muss."},{"id":12,"c":"op","de":"Es kommt darauf an, ob / wie …","n":"ankommen auf + Akk","t":"b2","cz":"Záleží na tom, jestli / jak …","ex":"Es kommt darauf an, wie viel Zeit man für die Entscheidung hat."},{"id":13,"c":"op","de":"Einerseits …, andererseits …","n":"po obou hned sloveso","t":"b2","cz":"Na jedné straně …, na druhé straně …","ex":"Einerseits ist die Stelle gut bezahlt, andererseits ist sie nicht besonders interessant."},{"id":14,"c":"op","de":"Ich muss zugeben, dass …","n":"zugeben = přiznat","t":"notebook","cz":"Musím přiznat, že …","ex":"Ich muss zugeben, dass mir dieser Gedanke leider sehr bekannt vorkommt."},{"id":15,"c":"op","de":"Das trifft auf mich zu.","n":"zutreffen auf + Akk","t":"notebook","cz":"To platí i pro mě. / To je můj případ.","ex":"Wenig Zeit und trotzdem Sport? Das trifft auf mich zu."},{"id":16,"c":"ag","de":"Da stimme ich dir / Ihnen voll und ganz zu.","n":"zustimmen + Dat","t":"b2","cz":"V tom s tebou / s vámi naprosto souhlasím.","ex":"Da stimme ich Ihnen voll und ganz zu: Ohne Kontakte geht es nicht."},{"id":17,"c":"ag","de":"Da bin ich ganz deiner / Ihrer Meinung.","n":"","t":"b2","cz":"V tom jsem úplně stejného názoru.","ex":"Da bin ich ganz deiner Meinung, wir sollten mehr Grün in der Stadt haben."},{"id":18,"c":"ag","de":"Das sehe ich genauso.","n":"","t":"b2","cz":"Vidím to stejně.","ex":"„Arbeit muss Spaß machen.“ – „Das sehe ich genauso.“"},{"id":19,"c":"ag","de":"Da hast du völlig recht.","n":"","t":"b2","cz":"V tom máš naprostou pravdu.","ex":"Da hast du völlig recht, Lügen haben kurze Beine."},{"id":20,"c":"ag","de":"Das sehe ich (etwas) anders.","n":"zdvořilý nesouhlas","t":"b2","cz":"Vidím to (trochu) jinak.","ex":"Das sehe ich etwas anders: Nicht jede Regelverletzung ist gleich schlimm."},{"id":21,"c":"ag","de":"Da muss ich dir / Ihnen widersprechen.","n":"widersprechen + Dat","t":"b2","cz":"V tom ti / vám musím oponovat.","ex":"Da muss ich Ihnen widersprechen – die Zahlen zeigen etwas anderes."},{"id":22,"c":"ag","de":"Ich bin da anderer Meinung.","n":"Genitiv!","t":"b2","cz":"Jsem v tom jiného názoru.","ex":"Ich bin da anderer Meinung, weil die Kosten viel zu hoch sind."},{"id":23,"c":"ag","de":"Das stimmt zwar, aber …","n":"zwar … aber","t":"b2","cz":"To sice platí, ale …","ex":"Das stimmt zwar, aber man braucht dafür viel mehr Zeit."},{"id":24,"c":"ag","de":"Da hast du nicht ganz unrecht, aber …","n":"částečný souhlas","t":"b2","cz":"Nemáš úplně nepravdu, ale …","ex":"Da hast du nicht ganz unrecht, aber die Idee ist schwer umzusetzen."},{"id":25,"c":"ag","de":"Ich habe da meine Bedenken.","n":"Bedenken äußern","t":"notebook","cz":"Mám v tom své pochybnosti / obavy.","ex":"Ich habe da meine Bedenken, ob sich das so schnell realisieren lässt."},{"id":26,"c":"ag","de":"Ich möchte einwenden, dass …","n":"einwenden = namítnout","t":"notebook","cz":"Chtěl bych namítnout, že …","ex":"Ich möchte einwenden, dass nicht alle Menschen ein Auto brauchen."},{"id":27,"c":"ag","de":"Könnten wir uns darauf einigen, dass … ?","n":"sich einigen auf + Akk","t":"b2","cz":"Mohli bychom se shodnout na tom, že …?","ex":"Könnten wir uns darauf einigen, dass wir zuerst ein Pilotprojekt starten?"},{"id":28,"c":"ev","de":"Mir persönlich gefällt die Idee wirklich gut.","n":"gefallen + Dat","t":"notebook","cz":"Mně osobně se ten nápad opravdu líbí.","ex":"Mir persönlich gefällt die Idee mit den Superblocks wirklich gut."},{"id":29,"c":"ev","de":"Ich finde die Vorstellung, … einfach genial / faszinierend.","n":"","t":"notebook","cz":"Představa, že …, mi přijde prostě geniální / fascinující.","ex":"Ich finde die Vorstellung, mehr Grün und weniger Autos in der Stadt zu haben, einfach genial."},{"id":30,"c":"ev","de":"Super Idee! / Sehr originell!","n":"krátká reakce","t":"notebook","cz":"Super nápad! / Velmi originální!","ex":"Musik für Außerirdische? Super Idee! Sehr originell!"},{"id":31,"c":"ev","de":"… fände ich supernützlich / äußerst sinnvoll.","n":"Konj. II: fände","t":"notebook","cz":"… by mi přišlo velmi užitečné / nesmírně smysluplné.","ex":"Einen Gemeinschaftsgarten im Viertel fände ich äußerst sinnvoll."},{"id":32,"c":"ev","de":"Das ist eine großartige / ausgesprochen gute Idee!","n":"ausgesprochen = mimořádně","t":"notebook","cz":"To je skvělý / mimořádně dobrý nápad!","ex":"Das ist eine ausgesprochen gute Idee! So lernen die Kinder Verantwortung."},{"id":33,"c":"ev","de":"Finde ich nicht (so) gut.","n":"hovorově, bez „Das“","t":"notebook","cz":"To se mi (moc) nelíbí.","ex":"Kein Essen schenken? Finde ich nicht so gut."},{"id":34,"c":"ev","de":"Das halte ich für nicht angebracht.","n":"angebracht = vhodný","t":"notebook","cz":"To nepovažuji za vhodné.","ex":"Das halte ich für nicht angebracht, wir kennen die Gäste ja kaum."},{"id":35,"c":"ev","de":"Wozu sollte man denn so was machen?","n":"řečnická otázka","t":"notebook","cz":"K čemu by se něco takového vůbec mělo dělat?","ex":"Wozu sollte man denn so was machen? Das kostet nur Geld."},{"id":36,"c":"ev","de":"… lässt sich bestimmt / sicherlich (nicht) umsetzen.","n":"sich lassen + Inf = dá se","t":"notebook","cz":"… se určitě (ne)dá uskutečnit.","ex":"Die Idee mit den Baumpatenschaften lässt sich sicherlich gut umsetzen."},{"id":37,"c":"ev","de":"… wäre sicherlich / vermutlich (nicht so) einfach realisierbar.","n":"","t":"notebook","cz":"… by bylo jistě / pravděpodobně (ne)snadno proveditelné.","ex":"Ein vertikaler Garten an alten Gebäuden wäre vermutlich nicht so einfach realisierbar."},{"id":38,"c":"ev","de":"Das ist gut denkbar.","n":"","t":"notebook","cz":"To je docela dobře představitelné / možné.","ex":"Ein Dachgarten bei uns im Viertel? Das ist gut denkbar."},{"id":39,"c":"ev","de":"Über … habe ich schon einiges gelesen / gehört.","n":"vyjádření znalosti","t":"notebook","cz":"O … jsem už leccos četl / slyšel.","ex":"Über Dachgärten habe ich schon einiges gelesen."},{"id":40,"c":"ev","de":"Mit dem Thema … habe ich mich ehrlich gesagt noch nicht beschäftigt.","n":"sich beschäftigen mit + Dat","t":"notebook","cz":"Tématem … jsem se, upřímně řečeno, ještě nezabýval.","ex":"Mit dem Thema Stadtplanung habe ich mich ehrlich gesagt noch nicht beschäftigt."},{"id":41,"c":"di","de":"Darf ich fragen, wie / warum … ?","n":"nepřímá otázka → sloveso na konec","t":"notebook","cz":"Smím se zeptat, jak / proč …?","ex":"Darf ich fragen, warum Sie sich für diese Lösung entschieden haben?"},{"id":42,"c":"di","de":"Ich würde gern noch etwas mehr darüber wissen, wie …","n":"","t":"notebook","cz":"Rád bych o tom věděl ještě něco víc, jak …","ex":"Ich würde gern noch etwas mehr darüber wissen, wie das Projekt finanziert wird."},{"id":43,"c":"di","de":"Ich wüsste gern Genaueres über …","n":"Konj. II: wüsste","t":"notebook","cz":"Rád bych věděl podrobnosti o …","ex":"Ich wüsste gern Genaueres über die Kosten."},{"id":44,"c":"di","de":"Ich kann (sehr gut) nachvollziehen, dass / wie …","n":"nachvollziehen = pochopit","t":"notebook","cz":"Dokážu (velmi dobře) pochopit, že / jak …","ex":"Ich kann sehr gut nachvollziehen, wie schwierig diese Entscheidung für dich war."},{"id":45,"c":"di","de":"Das stelle ich mir spannend / aufregend vor.","n":"sich (Dat) etw. vorstellen","t":"notebook","cz":"To si představuji jako napínavé / vzrušující.","ex":"Ein Praktikum in Japan? Das stelle ich mir total spannend vor."},{"id":46,"c":"di","de":"Es ist doch so: …","n":"uvedení argumentu","t":"notebook","cz":"Je to přece tak: …","ex":"Es ist doch so: Man hält Geheimnisse, weil man nicht alles sagen möchte."},{"id":47,"c":"di","de":"Im Prinzip ist es oft so, dass …","n":"","t":"notebook","cz":"V principu je to často tak, že …","ex":"Im Prinzip ist es oft so, dass man die anderen nicht beunruhigen möchte."},{"id":48,"c":"di","de":"Ehrlich gesagt liegt es daran, dass …","n":"liegen an + Dat","t":"notebook","cz":"Upřímně řečeno je to tím, že …","ex":"Ehrlich gesagt liegt es daran, dass man schlechte Erfahrungen gemacht hat."},{"id":49,"c":"di","de":"Da fragt man sich schon, ob …","n":"","t":"notebook","cz":"Člověk se pak opravdu ptá, jestli …","ex":"Da fragt man sich schon, ob es überhaupt möglich ist, keine Geheimnisse zu haben."},{"id":50,"c":"di","de":"Sagen wir mal so: …","n":"opatrná formulace","t":"notebook","cz":"Řekněme to takhle: …","ex":"Sagen wir mal so: Man kann Freunden Geheimnisse anvertrauen, aber nicht allen."},{"id":51,"c":"di","de":"Wie gesagt, …","n":"po něm hned sloveso","t":"notebook","cz":"Jak jsem řekl, …","ex":"Wie gesagt, es ist nicht einfach, Geheimnisse zu erzählen."},{"id":52,"c":"di","de":"Wir fänden es eine gute Idee, … zu …","n":"návrh, Konj. II","t":"notebook","cz":"Přišlo by nám jako dobrý nápad …","ex":"Wir fänden es eine gute Idee, die Außerirdischen nach Hause einzuladen."},{"id":53,"c":"di","de":"Dadurch bekämen sie eine Vorstellung davon, …","n":"bekommen → bekämen","t":"notebook","cz":"Díky tomu by si udělali představu o tom, …","ex":"Dadurch bekämen sie eine Vorstellung davon, wie wir auf der Erde leben."},{"id":54,"c":"di","de":"Auf diese Weise könnte man ihnen zeigen, …","n":"","t":"notebook","cz":"Tímto způsobem by se jim dalo ukázat, …","ex":"Auf diese Weise könnte man ihnen zeigen, was Gastfreundschaft ist."},{"id":55,"c":"di","de":"Was hältst du / halten Sie von … ?","n":"halten von + Dat","t":"notebook","cz":"Co si myslíš / myslíte o …?","ex":"Was halten Sie von unserem Vorschlag?"},{"id":56,"c":"di","de":"Wie wäre es, wenn … ?","n":"návrh","t":"b2","cz":"Co kdybychom …?","ex":"Wie wäre es, wenn wir das Treffen auf Donnerstag verschieben?"},{"id":57,"c":"ex","de":"Vor etwa … Jahren habe ich Folgendes erlebt: …","n":"vor + Dat","t":"notebook","cz":"Asi před … lety jsem zažil následující: …","ex":"Vor etwa zwölf Jahren habe ich Folgendes erlebt: Ich habe meinen Kollegen Karel kennengelernt."},{"id":58,"c":"ex","de":"Ich erinnere mich noch gut daran, wie …","n":"sich erinnern an + Akk","t":"notebook","cz":"Ještě si dobře pamatuji, jak …","ex":"Ich erinnere mich noch gut daran, wie schwierig es für mich war, neue Sachen zu lernen."},{"id":59,"c":"ex","de":"Ich werde nie vergessen, wie …","n":"","t":"notebook","cz":"Nikdy nezapomenu, jak …","ex":"Ich werde nie vergessen, wie wichtig die Firmenkultur für alle Mitarbeiter war."},{"id":60,"c":"ex","de":"Ich weiß noch genau, wie …","n":"","t":"notebook","cz":"Ještě přesně vím, jak …","ex":"Ich weiß noch genau, wie ich vor dem Denkmal stand und alles gelesen habe."},{"id":61,"c":"ex","de":"Dadurch ist mir klar geworden, dass …","n":"klar werden + Dat","t":"notebook","cz":"Díky tomu mi došlo, že …","ex":"Dadurch ist mir klar geworden, dass nicht jede Firma automatisch gut funktioniert."},{"id":62,"c":"ex","de":"Das war der Grund, warum …","n":"","t":"notebook","cz":"To byl důvod, proč …","ex":"Das war der Grund, warum ich jetzt über einen Jobwechsel nachdenke."},{"id":63,"c":"ex","de":"Seitdem lege ich mehr Wert auf …","n":"Wert legen auf + Akk","t":"notebook","cz":"Od té doby kladu větší důraz na …","ex":"Seitdem lege ich mehr Wert auf mein Verhalten gegenüber meinem Team."},{"id":64,"c":"ex","de":"Das hat mich zum Nachdenken gebracht.","n":"","t":"notebook","cz":"To mě přimělo k zamyšlení.","ex":"Der Mut der jungen Leute hat mich sehr zum Nachdenken gebracht."},{"id":65,"c":"ex","de":"Das war für mich der Anlass, … zu …","n":"Anlass = podnět","t":"notebook","cz":"To pro mě bylo podnětem, abych …","ex":"Das war für mich der Anlass, mich politisch zu engagieren."},{"id":66,"c":"ex","de":"Das kommt mir (sehr) bekannt vor.","n":"vorkommen + Dat","t":"notebook","cz":"To mi připadá (velmi) povědomé.","ex":"Das Gefühl, benachteiligt zu sein, kommt mir sehr bekannt vor."},{"id":67,"c":"pr","de":"Ich habe etwas total Spannendes gefunden – und zwar …","n":"etwas + Adj. velkým písmenem","t":"notebook","cz":"Našel jsem něco hrozně zajímavého – a sice …","ex":"Ich habe etwas total Spannendes gefunden – und zwar gibt es weltweit 750 Millionen Analphabeten."},{"id":68,"c":"pr","de":"Okay, das war's erst mal.","n":"ukončení hlasové zprávy","t":"notebook","cz":"Dobře, to je zatím všechno.","ex":"Okay, das war's erst mal, was ich erzählen wollte. Melde dich!"},{"id":69,"c":"pr","de":"Wusstest du / Wussten Sie zum Beispiel, dass … ?","n":"","t":"notebook","cz":"Věděl jsi / Věděli jste například, že …?","ex":"Wussten Sie zum Beispiel, dass man zwei Formen von Analphabetismus unterscheidet?"},{"id":70,"c":"pr","de":"Superspannend finde ich, dass …","n":"","t":"notebook","cz":"Hrozně zajímavé mi přijde, že …","ex":"Superspannend finde ich, dass fast zwei Drittel der Analphabeten weiblich sind."},{"id":71,"c":"pr","de":"Ich hatte ja keine Ahnung, dass …","n":"","t":"notebook","cz":"Neměl jsem vůbec tušení, že …","ex":"Ich hatte ja keine Ahnung, dass jeder zehnte Mensch betroffen ist."},{"id":72,"c":"pr","de":"Umfragen / Schätzungen zufolge …","n":"zufolge stojí ZA podst. jménem","t":"notebook","cz":"Podle průzkumů / odhadů …","ex":"Umfragen zufolge hat jeder Mensch im Durchschnitt 13 Geheimnisse."},{"id":73,"c":"pr","de":"Der Anteil ist von … auf … Prozent gestiegen / gesunken.","n":"von … auf … = z … na …","t":"notebook","cz":"Podíl vzrostl / klesl z … na … procent.","ex":"Der Anteil der Radfahrer ist von 10 auf 18 Prozent gestiegen."},{"id":74,"c":"pr","de":"Jeder Zehnte … / zwei Drittel … / ein Viertel …","n":"","t":"notebook","cz":"Každý desátý … / dvě třetiny … / čtvrtina …","ex":"Fast zwei Drittel der Befragten fahren täglich mit dem Bus."},{"id":75,"c":"pr","de":"Der Vortrag beschäftigte sich mit der Frage, …","n":"shrnutí přednášky","t":"notebook","cz":"Přednáška se zabývala otázkou, …","ex":"Der Vortrag beschäftigte sich mit der Frage, wie wir friedlich zusammenleben können."},{"id":76,"c":"pr","de":"Im ersten Teil sprach sie über …","n":"sprechen über + Akk","t":"notebook","cz":"V první části mluvila o …","ex":"Im ersten Teil sprach sie über Erfahrungen mit Vandalismus."},{"id":77,"c":"pr","de":"Danach behandelte sie den Aspekt …","n":"","t":"notebook","cz":"Poté se věnovala aspektu …","ex":"Danach behandelte sie den Aspekt „Gemeinsam handeln“."},{"id":78,"c":"pr","de":"Die zentrale Aussage war, dass …","n":"","t":"notebook","cz":"Hlavní sdělení bylo, že …","ex":"Die zentrale Aussage war, dass Polizei, Schulen und Vereine zusammenarbeiten sollten."},{"id":79,"c":"pr","de":"Sie nannte folgendes Beispiel: …","n":"nennen – nannte","t":"notebook","cz":"Uvedla následující příklad: …","ex":"Sie nannte folgendes Beispiel: die Aktion „Gewalt sehen, nicht wegsehen“."},{"id":80,"c":"pr","de":"Zusammenfassend lässt sich sagen: …","n":"","t":"notebook","cz":"Shrnuto lze říci: …","ex":"Zusammenfassend lässt sich sagen: Ohne Zusammenarbeit geht es nicht."},{"id":81,"c":"pr","de":"In meiner Präsentation geht es um …","n":"es geht um + Akk","t":"b2","cz":"Moje prezentace je o …","ex":"In meiner Präsentation geht es um akustische Überwachung von Maschinen."},{"id":82,"c":"pr","de":"Ich komme nun zum nächsten Punkt.","n":"","t":"b2","cz":"Přejdu teď k dalšímu bodu.","ex":"Ich komme nun zum nächsten Punkt: den Vorteilen für den Kunden."},{"id":83,"c":"pr","de":"Damit komme ich zum Schluss. Vielen Dank für Ihre Aufmerksamkeit.","n":"","t":"b2","cz":"Tím se dostávám k závěru. Děkuji za pozornost.","ex":"Damit komme ich zum Schluss. Vielen Dank für Ihre Aufmerksamkeit – haben Sie Fragen?"},{"id":84,"c":"le","de":"Durch Ihre Webseite wurde ich auf … aufmerksam.","n":"aufmerksam werden auf + Akk","t":"notebook","cz":"Díky vašemu webu jsem si všiml …","ex":"Durch Ihre Webseite wurde ich auf Ihre nachhaltigen Wanderschuhe aufmerksam."},{"id":85,"c":"le","de":"Wir sind durch … auf Sie aufmerksam geworden.","n":"","t":"notebook","cz":"Dozvěděli jsme se o vás prostřednictvím …","ex":"Wir sind durch eine Fachmesse in Stuttgart auf Sie aufmerksam geworden."},{"id":86,"c":"le","de":"Ich habe Ihre Anzeige in … gelesen und interessiere mich für …","n":"sich interessieren für + Akk","t":"notebook","cz":"Četl jsem váš inzerát v … a zajímám se o …","ex":"Ich habe Ihre Anzeige in der Fachzeitschrift gelesen und interessiere mich für Ihr Angebot."},{"id":87,"c":"le","de":"… ist ein mittelständisches Unternehmen mit Sitz in …","n":"","t":"notebook","cz":"… je středně velká firma se sídlem v …","ex":"Sport-Experte ist ein mittelständisches Unternehmen mit Sitz in München."},{"id":88,"c":"le","de":"… ist ein Unternehmen, das auf … spezialisiert ist.","n":"spezialisiert auf + Akk","t":"notebook","cz":"… je firma, která se specializuje na …","ex":"Unsere Firma ist ein Unternehmen, das auf vorausschauende Wartung spezialisiert ist."},{"id":89,"c":"le","de":"Wir möchten unser Sortiment um … erweitern.","n":"erweitern um + Akk","t":"notebook","cz":"Chceme rozšířit náš sortiment o …","ex":"Wir möchten unser Sortiment um nachhaltige Wanderschuhe erweitern."},{"id":90,"c":"le","de":"Ihr Produkt würde eine hervorragende Ergänzung zu … darstellen.","n":"","t":"notebook","cz":"Váš produkt by byl vynikajícím doplňkem k …","ex":"Ihr Produkt würde eine hervorragende Ergänzung zu unserem Sortiment darstellen."},{"id":91,"c":"le","de":"Gern würden wir uns einen Überblick über … verschaffen.","n":"","t":"notebook","cz":"Rádi bychom si udělali přehled o …","ex":"Gern würden wir uns einen Überblick über Ihre Produkte verschaffen."},{"id":92,"c":"le","de":"Ich bitte Sie um die Zusendung eines Katalogs.","n":"bitten um + Akk","t":"notebook","cz":"Prosím vás o zaslání katalogu.","ex":"Ich bitte Sie um die Zusendung eines Katalogs mit Informationen zu Preisen und Materialien."},{"id":93,"c":"le","de":"Könnten Sie bitte nähere Angaben zu … machen?","n":"","t":"notebook","cz":"Mohl byste prosím uvést bližší údaje k …?","ex":"Könnten Sie bitte auch nähere Angaben zu den Lieferzeiten machen?"},{"id":94,"c":"le","de":"Ich bedanke mich im Voraus und freue mich auf Ihre Antwort.","n":"sich freuen auf + Akk","t":"notebook","cz":"Předem děkuji a těším se na vaši odpověď.","ex":"Ich bedanke mich im Voraus und freue mich auf Ihre baldige Antwort."},{"id":95,"c":"le","de":"Für weitere Fragen stehe ich Ihnen gern zur Verfügung.","n":"zur Verfügung stehen","t":"notebook","cz":"V případě dalších dotazů jsem vám rád k dispozici.","ex":"Für weitere Fragen stehe ich Ihnen jederzeit gern zur Verfügung."},{"id":96,"c":"le","de":"Ich wende mich an Sie, weil …","n":"sich wenden an + Akk","t":"b2","cz":"Obracím se na vás, protože …","ex":"Ich wende mich an Sie, weil ich mit Ihrem Service nicht zufrieden bin."},{"id":97,"c":"le","de":"Ich möchte mich über … beschweren.","n":"sich beschweren über + Akk","t":"b2","cz":"Chtěl bych si stěžovat na …","ex":"Ich möchte mich über die verspätete Lieferung beschweren."},{"id":98,"c":"le","de":"Ich wäre Ihnen dankbar, wenn …","n":"Konj. II, zdvořilá prosba","t":"b2","cz":"Byl bych vám vděčný, kdyby …","ex":"Ich wäre Ihnen dankbar, wenn Sie mir bis Freitag antworten könnten."},{"id":99,"c":"hy","de":"Wenn ich in dieser Situation wäre, würde ich …","n":"Konj. II přítomný","t":"notebook","cz":"Kdybych byl v této situaci, …","ex":"Wenn ich in dieser Situation wäre, würde ich sofort die Feuerwehr anrufen."},{"id":100,"c":"hy","de":"Wenn ich das gewusst hätte, hätte ich …","n":"Konj. II minulý","t":"notebook","cz":"Kdybych to byl věděl, byl bych …","ex":"Wenn ich das gewusst hätte, hätte ich es dir gesagt."},{"id":101,"c":"hy","de":"Du hättest mehr lernen sollen.","n":"hätte + Inf. + Modalverb","t":"notebook","cz":"Měl ses víc učit.","ex":"Du hättest früher anrufen sollen, dann hätte ich dir helfen können."},{"id":102,"c":"hy","de":"Was hättest du an meiner Stelle gemacht?","n":"an meiner Stelle","t":"notebook","cz":"Co bys na mém místě udělal ty?","ex":"Ich habe den Job abgelehnt. Was hättest du an meiner Stelle gemacht?"},{"id":103,"c":"hy","de":"Ich habe den Eindruck, als ob …","n":"als ob + Konj. II, sloveso na konec","t":"notebook","cz":"Mám dojem, jako by …","ex":"Ich habe den Eindruck, als ob die Außerirdischen kein Interesse an uns hätten."},{"id":104,"c":"hy","de":"Es sieht so aus, als ob …","n":"","t":"notebook","cz":"Vypadá to, jako by …","ex":"Es sieht so aus, als ob der Kunde noch nicht entschieden hätte."},{"id":105,"c":"hy","de":"Es kommt mir so vor, als ob …","n":"","t":"notebook","cz":"Připadá mi, jako by …","ex":"Es kommt mir so vor, als ob sie Angst vor uns hätten."},{"id":106,"c":"hy","de":"Er tut so, als wäre er krank.","n":"als + Konj. II, sloveso hned po als","t":"notebook","cz":"Dělá, jako by byl nemocný.","ex":"Er tut so, als wüsste er alles."},{"id":107,"c":"hy","de":"Das dürfte kein Problem sein.","n":"dürfte ≈ asi 75 %","t":"notebook","cz":"To by asi neměl být problém.","ex":"Ein Termin nächste Woche dürfte kein Problem sein."},{"id":108,"c":"hy","de":"Ich müsste das eigentlich leicht hinkriegen.","n":"müsste ≈ asi 90 %","t":"notebook","cz":"To bych měl vlastně snadno zvládnout.","ex":"Die Präsentation müsste ich eigentlich leicht hinkriegen."},{"id":109,"c":"hy","de":"Sie dürfte … haben / sein.","n":"domněnka o minulosti","t":"notebook","cz":"Asi už … (domněnka)","ex":"Sie dürfte ihre Accounts inzwischen gelöscht haben."},{"id":110,"c":"hy","de":"Er soll … haben.","n":"sollen = údajně (slyšel jsem)","t":"notebook","cz":"Prý … / Údajně …","ex":"Jeder Mensch soll im Durchschnitt 13 Geheimnisse haben."},{"id":111,"c":"hy","de":"Er will … sein / haben.","n":"wollen = tvrdí o sobě","t":"notebook","cz":"Tvrdí o sobě, že …","ex":"Der Chef will schon einen Marathon gelaufen sein."},{"id":112,"c":"hy","de":"Angeblich … / Es heißt, dass …","n":"","t":"notebook","cz":"Údajně … / Říká se, že …","ex":"Angeblich sinkt die Wahrscheinlichkeit, dass jemand lügt, mit dem Alter."},{"id":113,"c":"hy","de":"Laut einer Studie …","n":"laut + Dat/Gen","t":"notebook","cz":"Podle jedné studie …","ex":"Laut einer Studie hat jeder Mensch im Durchschnitt 13 Geheimnisse."},{"id":114,"c":"nv","de":"zu etwas Stellung nehmen","n":"zu + Dat","t":"notebook","cz":"zaujmout k něčemu stanovisko","ex":"Bitte nehmen Sie zu dieser Frage kurz Stellung."},{"id":115,"c":"nv","de":"auf etwas Wert legen","n":"auf + Akk","t":"notebook","cz":"klást na něco důraz","ex":"Ich lege großen Wert auf Pünktlichkeit."},{"id":116,"c":"nv","de":"an etwas / jemandem Kritik üben","n":"an + Dat","t":"notebook","cz":"kritizovat něco / někoho","ex":"Die Opposition übt scharfe Kritik an der Regierung."},{"id":117,"c":"nv","de":"etwas in Frage stellen","n":"= bezweifeln","t":"notebook","cz":"zpochybnit něco","ex":"Sie stellt die Ergebnisse der Studie in Frage."},{"id":118,"c":"nv","de":"etwas in Kauf nehmen","n":"","t":"notebook","cz":"smířit se s něčím (nevýhodou)","ex":"Für einen interessanten Job nehme ich ein niedrigeres Gehalt in Kauf."},{"id":119,"c":"nv","de":"gegen etwas Widerstand leisten","n":"gegen + Akk","t":"notebook","cz":"klást odpor proti něčemu","ex":"Die Weiße Rose leistete Widerstand gegen das NS-Regime."},{"id":120,"c":"nv","de":"Beihilfe zu etwas leisten","n":"zu + Dat","t":"notebook","cz":"napomáhat něčemu (trestnému)","ex":"Er soll Beihilfe zum Betrug geleistet haben."},{"id":121,"c":"nv","de":"erste Hilfe leisten","n":"","t":"notebook","cz":"poskytnout první pomoc","ex":"In Tschechien muss man laut Gesetz erste Hilfe leisten."},{"id":122,"c":"nv","de":"eine Straftat begehen","n":"begehen – beging – hat begangen","t":"notebook","cz":"spáchat trestný čin","ex":"Wer eine Straftat begeht, wird vor Gericht gestellt."},{"id":123,"c":"nv","de":"gegen Regeln verstoßen","n":"= sich nicht an Vorschriften halten","t":"notebook","cz":"porušit pravidla","ex":"Wer gegen die Regeln verstößt, muss eine Strafe zahlen."},{"id":124,"c":"nv","de":"etwas ernst nehmen","n":"","t":"notebook","cz":"brát něco vážně","ex":"Man sollte jede Regelverletzung ernst nehmen."},{"id":125,"c":"nv","de":"eine Entscheidung treffen / fällen","n":"","t":"notebook","cz":"učinit rozhodnutí","ex":"Im Juli habe ich eine schwierige Entscheidung getroffen."},{"id":126,"c":"nv","de":"Sicherheitsmaßnahmen ergreifen","n":"","t":"notebook","cz":"přijmout bezpečnostní opatření","ex":"Im Gebirge muss man Sicherheitsmaßnahmen ergreifen."},{"id":127,"c":"nv","de":"den Überblick behalten","n":"","t":"notebook","cz":"udržet si přehled","ex":"Bei so vielen Projekten ist es schwer, den Überblick zu behalten."},{"id":128,"c":"nv","de":"im Notfall einen klaren Kopf bewahren","n":"","t":"notebook","cz":"v nouzi zachovat chladnou hlavu","ex":"Im Notfall muss man einen klaren Kopf bewahren."},{"id":129,"c":"nv","de":"jemanden in Sicherheit bringen","n":"","t":"notebook","cz":"dostat někoho do bezpečí","ex":"Die Feuerwehr hat alle Bewohner in Sicherheit gebracht."},{"id":130,"c":"nv","de":"etwas zur Verfügung stellen","n":"es steht mir zur Verfügung","t":"notebook","cz":"dát něco k dispozici","ex":"Wir stellen Ihnen gern ein Testgerät zur Verfügung."},{"id":131,"c":"nv","de":"jemandem einen Gefallen tun","n":"Dat","t":"notebook","cz":"udělat někomu laskavost","ex":"Kannst du mir einen Gefallen tun und mich abholen?"},{"id":132,"c":"nv","de":"neue Kontakte knüpfen","n":"","t":"notebook","cz":"navázat nové kontakty","ex":"Auf der Messe konnten wir viele neue Kontakte knüpfen."},{"id":133,"c":"nv","de":"einen Termin vereinbaren","n":"","t":"notebook","cz":"domluvit si schůzku / termín","ex":"Am Stand haben wir gleich einen Termin vereinbart."},{"id":134,"c":"nv","de":"Bedenken äußern","n":"","t":"notebook","cz":"vyjádřit obavy","ex":"Einige Kollegen haben Bedenken geäußert."},{"id":135,"c":"nv","de":"bei etwas eine Rolle spielen","n":"bei + Dat","t":"notebook","cz":"hrát při něčem roli","ex":"Bei meinen Entscheidungen spielen Emotionen die größte Rolle."},{"id":136,"c":"nv","de":"etwas zum Ausdruck bringen","n":"","t":"notebook","cz":"vyjádřit něco","ex":"Er hat seine Unzufriedenheit deutlich zum Ausdruck gebracht."},{"id":137,"c":"nv","de":"Klage erheben (gegen jdn.)","n":"= jemanden verklagen","t":"notebook","cz":"podat žalobu (na někoho)","ex":"Der Kunde hat Klage gegen die Firma erhoben."},{"id":138,"c":"nv","de":"sich eine Ausrede einfallen lassen","n":"","t":"notebook","cz":"vymyslet si výmluvu","ex":"Er hat sich schnell eine Ausrede einfallen lassen."},{"id":139,"c":"nv","de":"Anstrengungen unternehmen","n":"","t":"notebook","cz":"vynaložit úsilí","ex":"Wir sollten größere Anstrengungen unternehmen, um das Weltall zu erforschen."},{"id":140,"c":"ko","de":"geltendes Recht / Gesetz","n":"geltend = platný","t":"notebook","cz":"platné právo / zákon","ex":"Nach geltendem Recht ist das verboten."},{"id":141,"c":"ko","de":"hartnäckiger Widerstand / hartnäckige Erkältung","n":"také: Vorurteil, Schweigen","t":"notebook","cz":"houževnatý odpor / vleklé nachlazení","ex":"Gegen das Projekt gab es hartnäckigen Widerstand."},{"id":142,"c":"ko","de":"eine heikle Angelegenheit / Situation","n":"heikel = choulostivý","t":"notebook","cz":"choulostivá záležitost / situace","ex":"Das Gehalt ist eine heikle Angelegenheit."},{"id":143,"c":"ko","de":"sich in einer rechtlichen Grauzone bewegen","n":"Grauzone = nejasně upravená oblast","t":"notebook","cz":"pohybovat se v právně šedé zóně","ex":"Das Herunterladen dieser Dateien bewegt sich in einer rechtlichen Grauzone."},{"id":144,"c":"ko","de":"ein reines Gewissen haben","n":"také: reine Wahrheit, reines Vergnügen","t":"notebook","cz":"mít čisté svědomí","ex":"Ich habe alles richtig gemacht und ein reines Gewissen."},{"id":145,"c":"ko","de":"Es herrscht Unklarheit darüber, ob …","n":"herrschen = panovat","t":"notebook","cz":"Panuje nejasnost ohledně toho, zda …","ex":"Es herrscht Unklarheit darüber, ob das legal ist."},{"id":146,"c":"ko","de":"rechtliche Schritte einleiten","n":"","t":"notebook","cz":"podniknout právní kroky","ex":"Die Firma will rechtliche Schritte gegen den Hersteller einleiten."},{"id":147,"c":"ko","de":"ein Kavaliersdelikt","n":"","t":"notebook","cz":"drobný přestupek, „nic vážného“","ex":"Für viele ist Schwarzfahren nur ein Kavaliersdelikt."},{"id":148,"c":"id","de":"jemandem die Daumen drücken","n":"doslova: mačkat palce","t":"notebook","cz":"držet někomu palce","ex":"Morgen ist deine Prüfung? Ich drücke dir die Daumen!"},{"id":149,"c":"id","de":"den (roten) Faden verlieren","n":"","t":"notebook","cz":"ztratit nit","ex":"Bei der Präsentation habe ich kurz den roten Faden verloren."},{"id":150,"c":"id","de":"das A und O","n":"","t":"notebook","cz":"alfa a omega, to nejdůležitější","ex":"Gute Vorbereitung ist das A und O."},{"id":151,"c":"id","de":"Augen zu und durch!","n":"","t":"notebook","cz":"Zatnout zuby a jít do toho!","ex":"Die Prüfung ist schwer, aber: Augen zu und durch!"},{"id":152,"c":"id","de":"Vitamin B","n":"B = Beziehungen","t":"notebook","cz":"známosti, kontakty („protekce“)","ex":"Den Job hat er nur durch Vitamin B bekommen."},{"id":153,"c":"id","de":"Übung macht den Meister.","n":"","t":"notebook","cz":"Cvičení dělá mistra.","ex":"Du sprichst schon viel besser – Übung macht den Meister!"},{"id":154,"c":"id","de":"Der frühe Vogel fängt den Wurm.","n":"","t":"notebook","cz":"Ranní ptáče dál doskáče.","ex":"Ich bin schon um sechs losgefahren – der frühe Vogel fängt den Wurm."},{"id":155,"c":"id","de":"Einem geschenkten Gaul schaut man nicht ins Maul.","n":"","t":"notebook","cz":"Darovanému koni na zuby nehleď.","ex":"Das Handy ist alt, aber einem geschenkten Gaul schaut man nicht ins Maul."},{"id":156,"c":"id","de":"Lügen haben kurze Beine.","n":"","t":"notebook","cz":"Lež má krátké nohy.","ex":"Er wurde erwischt – Lügen haben eben kurze Beine."},{"id":157,"c":"id","de":"Reden ist Silber, Schweigen ist Gold.","n":"varianta: Zuhören ist Gold","t":"notebook","cz":"Mluviti stříbro, mlčeti zlato.","ex":"Manchmal ist es besser, nichts zu sagen. Reden ist Silber, Schweigen ist Gold."},{"id":158,"c":"id","de":"alle Brücken hinter sich abbrechen","n":"","t":"notebook","cz":"spálit za sebou všechny mosty","ex":"Er brach alle Brücken hinter sich ab und fing in Berlin neu an."},{"id":159,"c":"id","de":"etwas / jemanden im Auge behalten","n":"","t":"notebook","cz":"nespustit něco / někoho z očí, hlídat","ex":"Wir sollten diesen Kunden im Auge behalten."},{"id":160,"c":"id","de":"sich mit Händen und Füßen verständigen","n":"","t":"notebook","cz":"domluvit se rukama nohama","ex":"Ich kann noch nicht gut Deutsch, aber ich verständige mich mit Händen und Füßen."},{"id":161,"c":"id","de":"einen Ohrwurm haben","n":"","t":"notebook","cz":"mít vlezlou písničku v hlavě","ex":"Seit dem Radio heute früh habe ich einen Ohrwurm."},{"id":162,"c":"id","de":"Ich verstehe nur Bahnhof.","n":"","t":"b2","cz":"Vůbec nerozumím. / Je to pro mě španělská vesnice.","ex":"Er hat so schnell gesprochen – ich habe nur Bahnhof verstanden."},{"id":163,"c":"id","de":"den Nagel auf den Kopf treffen","n":"","t":"b2","cz":"trefit hřebíček na hlavičku","ex":"Mit deiner Analyse hast du den Nagel auf den Kopf getroffen."},{"id":164,"c":"id","de":"die Nase voll haben (von etwas)","n":"von + Dat","t":"b2","cz":"mít něčeho plné zuby","ex":"Ich habe die Nase voll von den ständigen Aktualisierungen."},{"id":165,"c":"id","de":"ins Fettnäpfchen treten","n":"","t":"b2","cz":"šlápnout vedle, udělat trapas","ex":"Mit der Frage nach dem Alter bin ich voll ins Fettnäpfchen getreten."},{"id":166,"c":"id","de":"auf dem Holzweg sein","n":"","t":"b2","cz":"být na omylu, jít špatnou cestou","ex":"Wenn du glaubst, dass das billig wird, bist du auf dem Holzweg."},{"id":167,"c":"id","de":"um den heißen Brei herumreden","n":"","t":"b2","cz":"chodit kolem horké kaše","ex":"Red nicht um den heißen Brei herum, sag einfach, was los ist!"},{"id":168,"c":"id","de":"etwas auf die lange Bank schieben","n":"","t":"b2","cz":"odkládat něco na neurčito","ex":"Die Steuererklärung sollte man nicht auf die lange Bank schieben."},{"id":169,"c":"id","de":"aus einer Mücke einen Elefanten machen","n":"","t":"b2","cz":"dělat z komára velblouda","ex":"Es ist nur ein kleiner Kratzer – mach doch aus einer Mücke keinen Elefanten!"},{"id":170,"c":"id","de":"sich kein Blatt vor den Mund nehmen","n":"","t":"b2","cz":"nebrat si servítky","ex":"Unser Chef nimmt sich kein Blatt vor den Mund."},{"id":171,"c":"id","de":"unter vier Augen","n":"","t":"b2","cz":"mezi čtyřma očima","ex":"Können wir das bitte unter vier Augen besprechen?"},{"id":172,"c":"id","de":"Schwein haben","n":"","t":"b2","cz":"mít kliku","ex":"Wir haben den letzten Zug noch erwischt – da haben wir Schwein gehabt!"}];
+const CATS = {
+  op:{e:'💬',n:'Názor',de:'Meinung äußern',c:'#2f7fbf'},
+  ag:{e:'🤝',n:'Souhlas / nesouhlas',de:'Zustimmen & Widersprechen',c:'#7b55c7'},
+  ev:{e:'👍',n:'Hodnocení',de:'Bewerten',c:'#d08a1a'},
+  di:{e:'🗣',n:'Diskuse',de:'Diskutieren & Nachfragen',c:'#c2508a'},
+  ex:{e:'📖',n:'Zážitky',de:'Über Erlebnisse berichten',c:'#3c9d8f'},
+  pr:{e:'🎤',n:'Prezentace',de:'Präsentieren & Zusammenfassen',c:'#5b6ee0'},
+  le:{e:'✉️',n:'Formální dopis',de:'Formelle Briefe & E-Mails',c:'#7a6a55'},
+  hy:{e:'💭',n:'Hypotézy',de:'Hypothesen & Vermutungen',c:'#3a93b8'},
+  nv:{e:'⚙️',n:'Pevná spojení',de:'Nomen-Verb-Verbindungen',c:'#d0453b'},
+  ko:{e:'🔗',n:'Kolokace',de:'Kollokationen',c:'#5f8a2e'},
+  id:{e:'🍀',n:'Rčení a idiomy',de:'Redewendungen',c:'#2e9a55'},
+};
+const INTERVAL = {1:1, 2:2, 3:7, 4:14};
+const KEY = 'redemittel-b2-v1';
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const today = () => { const d = new Date(); return Math.floor((d - d.getTimezoneOffset()*60000) / 864e5); };
+
+let S = load();
+function fresh(){ return {p:{}, set:{dir:'de', size:10, cats:Object.keys(CATS)}}; }
+function load(){
+  try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.p && s.set) return s; } catch(e){}
+  return fresh();
+}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
+
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'),2200); }
+function show(id){ document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on', v.id===id)); window.scrollTo(0,0); }
+
+function pool(){ return CARDS.filter(c => S.set.cats.includes(c.c)); }
+function dueList(){
+  const t = today(), P = pool();
+  const due = P.filter(c => S.p[c.id] && S.p[c.id].d <= t).sort((a,b)=> S.p[a.id].b - S.p[b.id].b || S.p[a.id].d - S.p[b.id].d);
+  const neu = P.filter(c => !S.p[c.id]);
+  return {due, neu};
+}
+
+/* ---------- HOME ---------- */
+function renderHome(){
+  const {due, neu} = dueList();
+  $('#sDue').textContent = due.length;
+  $('#sNew').textContent = neu.length;
+  const cnt = {0:0,1:0,2:0,3:0,4:0};
+  CARDS.forEach(c => cnt[S.p[c.id] ? S.p[c.id].b : 0]++);
+  $('#boxes').innerHTML = [['0','nové'],['1','1'],['2','2'],['3','3'],['4','4']].map(([k,l]) =>
+    `<div class="bx"><b>${cnt[k]}</b><span>${k==='0'?'nezačaté':'přihr. '+l}</span></div>`).join('');
+  const n = sessionSize(due.length + neu.length);
+  const b = $('#startBtn');
+  b.disabled = n === 0;
+  b.textContent = n ? `Začít (${n} ${n===1?'karta':n<5?'karty':'karet'})` : (S.set.cats.length ? 'Na dnes hotovo ✓' : 'Vyber kategorii');
+  document.querySelectorAll('#dirSeg button').forEach(x=>x.classList.toggle('on', x.dataset.v===S.set.dir));
+  document.querySelectorAll('#sizeSeg button').forEach(x=>x.classList.toggle('on', +x.dataset.v===S.set.size));
+  $('#cats').innerHTML = Object.entries(CATS).map(([k,v]) => {
+    const total = CARDS.filter(c=>c.c===k).length;
+    return `<button class="chip ${S.set.cats.includes(k)?'on':''}" style="--cc:${v.c}" data-k="${k}">${v.e} ${v.n} <span style="color:var(--muted)">${total}</span></button>`;
+  }).join('');
+}
+function sessionSize(avail){ return S.set.size ? Math.min(S.set.size, avail) : avail; }
+
+$('#dirSeg').onclick = e => { const v=e.target.closest('button')?.dataset.v; if(v){S.set.dir=v; save(); renderHome();} };
+$('#sizeSeg').onclick = e => { const v=e.target.closest('button')?.dataset.v; if(v!=null){S.set.size=+v; save(); renderHome();} };
+$('#cats').onclick = e => {
+  const k = e.target.closest('.chip')?.dataset.k; if(!k) return;
+  const i = S.set.cats.indexOf(k); i>=0 ? S.set.cats.splice(i,1) : S.set.cats.push(k);
+  save(); renderHome();
+};
+
+/* ---------- STUDY ---------- */
+let Q = [], pos = 0, total = 0, free = false, failed = new Set(), stats = {yes:0,no:0}, flipped = false, curDir = 'de';
+
+function startSession(isFree){
+  free = isFree; failed = new Set(); stats = {yes:0,no:0};
+  if (free) {
+    Q = shuffle(pool().slice()).slice(0, S.set.size || 999);
+  } else {
+    const {due, neu} = dueList();
+    Q = due.concat(neu).slice(0, sessionSize(due.length + neu.length));
+  }
+  if (!Q.length) { toast('Žádné karty k procvičení'); return; }
+  total = Q.length; pos = 0;
+  show('study'); renderCard();
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+
+function tagHtml(c){ return c.t==='b2' ? '★ B2 navíc' : '📓 ze sešitu'; }
+function deSide(c, withEx){
+  return `<div class="phrase" lang="de">${esc(c.de)}</div>${c.n?`<div class="note">${esc(c.n)}</div>`:''}` +
+    (withEx ? `<div class="ex" lang="de"><b>z. B.</b>${esc(c.ex)}</div>` : '');
+}
+function czSide(c, withEx){
+  return `<div class="phrase">${esc(c.cz)}</div>` + (withEx ? `<div class="ex" lang="de"><b>z. B.</b>${esc(c.ex)}</div>` : '');
+}
+function face(c, inner, showSay){
+  const k = CATS[c.c];
+  return `<div class="band"><span>${k.e}</span><span>${esc(k.n)}</span><span class="num">#${c.id}</span></div>
+    <div class="body">${inner}</div>
+    <div class="foot"><span>${tagHtml(c)}</span>${showSay?`<button class="say" data-say aria-label="Přehrát německy">🔊</button>`:'<span></span>'}</div>`;
+}
+function renderCard(){
+  const c = Q[pos];
+  curDir = S.set.dir === 'mix' ? (Math.random() < .5 ? 'de' : 'cz') : S.set.dir;
+  const card = $('#card');
+  card.style.setProperty('--cc', CATS[c.c].c);
+  card.classList.remove('flip'); flipped = false;
+  const fr = curDir==='de' ? deSide(c,false) : czSide(c,false);
+  const bk = curDir==='de' ? czSide(c,true) : deSide(c,true);
+  // update back after the un-flip so the answer doesn't flash
+  $('#front').innerHTML = face(c, fr, curDir==='de');
+  $('#back').innerHTML = '';
+  setTimeout(()=>{ if(Q[pos]===c) $('#back').innerHTML = face(c, bk, true); }, 250);
+  $('#cnt').textContent = `${Math.min(pos+1,total)} / ${total}`;
+  $('#prog').style.width = (pos/total*100)+'%';
+  $('#ctrl').innerHTML = `<button class="btn" id="flipBtn">Ukázat odpověď</button><p class="hint center">nebo klepni na kartičku</p>`;
+  $('#flipBtn').onclick = flip;
+}
+function flip(){
+  if (flipped) { $('#card').classList.remove('flip'); flipped=false; return; }
+  const c = Q[pos];
+  if (!$('#back').innerHTML) $('#back').innerHTML = face(c, curDir==='de'?czSide(c,true):deSide(c,true), true);
+  $('#card').classList.add('flip'); flipped = true;
+  $('#ctrl').innerHTML = `<div class="answers"><button class="no" id="noBtn">Neumím</button><button class="yes" id="yesBtn">Umím</button></div>
+    <p class="hint center">${free ? 'Volné procvičování – přihrádky se nemění' : boxHint(c)}</p>`;
+  $('#noBtn').onclick = () => answer(false);
+  $('#yesBtn').onclick = () => answer(true);
+}
+function boxHint(c){
+  const b = S.p[c.id] ? S.p[c.id].b : 0;
+  const nb = failed.has(c.id) ? 1 : Math.min(4, (b||1)+1);
+  return b ? `Teď v přihrádce ${b} · Umím → přihrádka ${nb}` : `Nová karta · Umím → přihrádka ${nb}`;
+}
+function answer(ok){
+  const c = Q[pos];
+  ok ? stats.yes++ : stats.no++;
+  if (!free) {
+    const t = today(), cur = S.p[c.id];
+    if (ok) {
+      const nb = failed.has(c.id) ? 1 : Math.min(4, (cur ? cur.b : 1) + 1);
+      S.p[c.id] = {b:nb, d:t + INTERVAL[nb]};
+    } else {
+      failed.add(c.id);
+      S.p[c.id] = {b:1, d:t + 1};
+    }
+    save();
+  }
+  if (!ok) { Q.push(c); }   // zopakuj ji ještě na konci dávky
+  pos++;
+  if (pos >= Q.length) return finish();
+  total = Q.length;
+  renderCard();
+}
+function finish(){
+  $('#prog').style.width = '100%';
+  const {due, neu} = dueList();
+  const left = due.length + neu.length;
+  $('#doneText').textContent = free
+    ? `Prošel jsi ${stats.yes + stats.no} karet ve volném procvičování.`
+    : `Zopakováno: ${new Set(Q.map(c=>c.id)).size} karet. ${left ? `Na dnes zbývá ještě ${left}.` : 'Na dnes máš vše hotovo – zítra se ukážou další.'}`;
+  $('#againBtn').hidden = free || !left;
+  show('done');
+}
+$('#card').onclick = e => { if (e.target.closest('[data-say]')) return; flip(); };
+document.addEventListener('click', e => {
+  const s = e.target.closest('[data-say]'); if (!s) return;
+  e.stopPropagation(); speak(Q[pos].de);
+}, true);
+function speak(text){
+  if (!('speechSynthesis' in window)) return toast('Předčítání není dostupné');
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text.replace(/…/g, ', '));
+  u.lang = 'de-DE'; u.rate = .92;
+  const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith('de'));
+  if (v) u.voice = v;
+  speechSynthesis.speak(u);
+}
+document.addEventListener('keydown', e => {
+  if (!$('#study').classList.contains('on')) return;
+  if (e.key===' ' || e.key==='Enter') { e.preventDefault(); flip(); }
+  else if (flipped && (e.key==='1' || e.key==='ArrowLeft')) answer(false);
+  else if (flipped && (e.key==='2' || e.key==='ArrowRight')) answer(true);
+  else if (e.key==='Escape') { show('home'); renderHome(); }
+});
+
+/* ---------- LIST ---------- */
+function renderList(){
+  const q = $('#q').value.trim().toLowerCase();
+  const items = CARDS.filter(c => !q || (c.de+' '+c.cz+' '+c.ex+' '+c.n).toLowerCase().includes(q));
+  $('#items').innerHTML = items.map(c => {
+    const p = S.p[c.id];
+    return `<div class="item" style="--cc:${CATS[c.c].c}" data-id="${c.id}">
+      <span class="badge">${p ? 'přihr. '+p.b : 'nová'}</span>
+      <div class="de" lang="de">${CATS[c.c].e} ${esc(c.de)}</div>
+      <div class="cz">${esc(c.cz)}</div>
+      <div class="exl" lang="de">${c.n?esc(c.n)+' · ':''}z. B. ${esc(c.ex)}</div></div>`;
+  }).join('') || '<p class="sub center">Nic nenalezeno.</p>';
+}
+$('#q').oninput = renderList;
+$('#items').onclick = e => e.target.closest('.item')?.classList.toggle('open');
+
+/* ---------- NAV ---------- */
+$('#startBtn').onclick = () => startSession(false);
+$('#freeBtn').onclick = () => startSession(true);
+$('#againBtn').onclick = () => startSession(false);
+$('#listBtn').onclick = () => { show('list'); renderList(); };
+$('#helpBtn').onclick = () => show('help');
+$('#quit').onclick = $('#homeBtn').onclick = () => { show('home'); renderHome(); };
+document.querySelectorAll('[data-home]').forEach(b => b.onclick = () => { show('home'); renderHome(); });
+
+/* ---------- BACKUP ---------- */
+$('#expBtn').onclick = async () => {
+  const data = JSON.stringify(S), name = `redemittel-zaloha-${new Date().toISOString().slice(0,10)}.json`;
+  const file = new File([data], name, {type:'application/json'});
+  if (navigator.canShare && navigator.canShare({files:[file]})) {
+    try { await navigator.share({files:[file], title:'Záloha Redemittel'}); return; } catch(e){ if (e.name==='AbortError') return; }
+  }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(file); a.download = name; a.click();
+};
+$('#impBtn').onclick = () => $('#impFile').click();
+$('#impFile').onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  try {
+    const s = JSON.parse(await f.text());
+    if (!s.p || !s.set) throw 0;
+    S = s; save(); renderHome(); toast('Postup obnoven');
+  } catch(err){ toast('Soubor se nepodařilo načíst'); }
+  e.target.value = '';
+};
+$('#resetBtn').onclick = () => {
+  if (confirm('Opravdu smazat celý postup a začít od přihrádky 1?')) { const set = S.set; S = fresh(); S.set = set; save(); renderHome(); toast('Postup vynulován'); }
+};
+
+renderHome();
+if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
