@@ -109,6 +109,35 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute
 .score b{display:block;font-size:30px;line-height:1.1}.score span{font-size:13px;color:var(--muted)}
 .score>div+div{border-left:1px solid var(--line)}
 .okc{color:var(--good)}.noc{color:var(--bad)}
+.mine{margin-top:18px}
+.mine-head{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px}
+.mine-head span{color:var(--text);font-weight:600}
+.mine-saved{background:var(--surface);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);font-size:16px;border-left:4px solid var(--good)}
+.mine-meta{font-size:12px;color:var(--muted);margin-top:6px}
+.mine-btns{display:flex;gap:18px;align-items:center;margin-top:10px}
+.mine .btn.mine-btn{width:auto;padding:11px 18px;font-size:16px;white-space:nowrap}
+.lnk{color:var(--accent);font-size:15px;padding:6px 0}
+.mine-start{text-align:center}
+.mine-ta{display:block;width:100%;min-height:86px;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:inherit;font-size:16px;resize:vertical}
+.mine-ta:focus{outline:none;border-color:var(--accent)}
+.mine-res{margin-top:4px}
+.mine-prev{background:var(--surface);border-radius:12px;padding:12px 14px;margin:12px 0 4px;line-height:1.7;box-shadow:var(--shadow)}
+.mine del{color:var(--bad)}
+.mine ins{color:var(--good);text-decoration:none;font-weight:600;background:color-mix(in srgb,var(--good) 15%,transparent);border-radius:4px;padding:0 2px;margin-left:2px}
+.mine mark{background:color-mix(in srgb,#d08a1a 30%,transparent);color:inherit;border-radius:4px;padding:0 2px}
+.iss{border-left:3px solid var(--bad);padding:8px 12px;margin:8px 0;background:var(--surface);border-radius:8px}
+.iss small{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+.chip2{padding:4px 10px;border-radius:999px;border:1.5px solid var(--line);font-size:14px;margin:6px 6px 0 0;background:var(--surface)}
+.chip2.on{border-color:var(--good);background:color-mix(in srgb,var(--good) 14%,var(--surface))}
+.mine-ok{color:var(--good);font-weight:600;margin-top:12px}
+.mine-err{color:var(--bad);margin-top:12px}
+.mine-note{font-size:13px;color:var(--muted);margin:10px 0 0}
+.mine-tip{font-size:14px;margin:10px 0 0;padding:10px 12px;border-radius:10px;background:var(--surface2)}
+.keyrow{display:flex;justify-content:space-between;align-items:center;font-size:15px}
+.mine .btn.mine-btn:disabled{opacity:.5}
+.item .mine{display:none;margin-top:10px}.item.open .mine{display:block}
+.item .mine-ico{margin-left:6px}
+.only{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);margin:-4px 0 12px}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.on{opacity:1}
 </style>
@@ -142,6 +171,9 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute
     </div>
     <div class="label">Kategorie</div>
     <div class="chips" id="cats"></div>
+    <div class="label">Claude API klíč <span style="font-size:12px">(pro opravu vlastních vět)</span></div>
+    <div id="keyBox"></div>
+    <p class="mine-note" style="margin-top:8px">Klíč získáš na console.anthropic.com → API Keys. Zůstane jen v tomto zařízení a do zálohy se neukládá.</p>
   </div>
   <div class="links">
     <button id="expBtn">Zálohovat postup</button>
@@ -163,6 +195,7 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute
     <div class="face back" id="back"></div>
   </div></div>
   <div id="ctrl"></div>
+  <div class="mine" id="mineBox"></div>
 </section>
 
 <!-- DONE -->
@@ -191,6 +224,7 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute
 <section class="view" id="list">
   <div class="top"><button class="x" data-home aria-label="Zpět">‹</button><h1 style="margin:0;font-size:22px">Přehled karet</h1></div>
   <input class="search" id="q" type="search" placeholder="Hledat německy nebo česky…" autocomplete="off">
+  <label class="only"><input type="checkbox" id="onlyMine"> jen karty s mými větami</label>
   <div id="items"></div>
 </section>
 
@@ -211,6 +245,7 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute
     <li><b>Hraj obráceně (CZ → DE):</b> přečti českou stranu a nahlas řekni německou frázi. Přesně tohle budeš dělat u ústní zkoušky.</li>
     <li><b>Vlastní věta:</b> ke každé kartě vymysli jednu větu ze svého života. Zapamatuješ si ji líp než cizí příklad.</li>
     <li><b>Barevná hra:</b> vytáhni po jedné kartě z 💬 🤝 👍 🗣 a slož z nich krátkou diskusi.</li>
+    <li><b>✍️ Vlastní věta v aplikaci:</b> pod kartičkou napiš 1–3 věty s frází. Claude je opraví, vysvětlí chyby česky a opravenou verzi si uložíš. Najdeš ji u karty i v Přehledu.</li>
     <li><b>Malé dávky:</b> raději 10 minut denně než hodinu v neděli. Začni třeba jen s jednou kategorií.</li>
     <li><b>„→ sloveso na konec“</b> připomíná, že po dass, ob, wie, als ob, wenn jde sloveso na konec věty.</li>
   </ul></div>
@@ -274,6 +309,8 @@ function dueList(){
 
 /* ---------- HOME ---------- */
 function renderHome(){
+  refreshMineCount();
+  renderKey();
   const {due, neu} = dueList();
   $('#sDue').textContent = due.length;
   $('#sNew').textContent = neu.length;
@@ -349,6 +386,7 @@ function renderCard(){
   $('#prog').style.width = (pos/total*100)+'%';
   $('#ctrl').innerHTML = `<button class="btn" id="flipBtn">Ukázat odpověď</button><p class="hint center">nebo klepni na kartičku</p>`;
   $('#flipBtn').onclick = flip;
+  mountMine($('#mineBox'), c, false);
 }
 function flip(){
   if (flipped) { $('#card').classList.remove('flip'); flipped=false; return; }
@@ -424,28 +462,180 @@ function speak(text){
 }
 document.addEventListener('keydown', e => {
   if (!$('#study').classList.contains('on')) return;
+  if (e.target.closest && e.target.closest('textarea, input')) return;
   if (e.key===' ' || e.key==='Enter') { e.preventDefault(); flip(); }
   else if (flipped && (e.key==='1' || e.key==='ArrowLeft')) answer(false);
   else if (flipped && (e.key==='2' || e.key==='ArrowRight')) answer(true);
   else if (e.key==='Escape') { show('home'); renderHome(); }
 });
 
+/* ---------- MOJE VĚTY (oprava přes Claude API) ---------- */
+const SDK_URL = 'https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@1.6.0/+esm';
+const KEY_STORE = 'redemittel-claude-key';
+const MODEL = 'claude-opus-5-5';
+function mine(){ return S.mine || (S.mine = {}); }
+function apiKey(){ try { return localStorage.getItem(KEY_STORE) || ''; } catch(e){ return ''; } }
+const FIX_SCHEMA = {
+  type: 'object', additionalProperties: false,
+  required: ['corrected', 'is_correct', 'phrase_ok', 'changes', 'note'],
+  properties: {
+    corrected: {type: 'string', description: 'Celý text po opravě.'},
+    is_correct: {type: 'boolean', description: 'true, pokud původní text nepotřeboval žádnou opravu.'},
+    phrase_ok: {type: 'boolean', description: 'true, pokud je fráze z kartičky v opravené verzi použitá správně.'},
+    changes: {type: 'array', items: {type: 'object', additionalProperties: false, required: ['from', 'to', 'why'],
+      properties: {from: {type: 'string'}, to: {type: 'string'}, why: {type: 'string', description: 'Krátké vysvětlení česky.'}}}},
+    note: {type: 'string', description: 'Jedna až dvě věty česky: celkové hodnocení nebo tip. Prázdné, pokud není co dodat.'}
+  }
+};
+const SYSTEM = `Jsi zkušený lektor němčiny pro Čecha, který se připravuje na zkoušku Goethe-Zertifikat B2.
+Dostaneš frázi z kartičky (německy a česky) a 1–3 věty, které uživatel napsal německy, aby si frázi procvičil.
+Oprav gramatiku, pravopis, slovosled, koncovky, členy, slovesné tvary a také formulace, které by rodilý mluvčí neřekl.
+Zachovej smysl a styl uživatele a měň jen to, co je potřeba. Zkontroluj, že je fráze z kartičky použitá správně.
+Vysvětlení piš stručně česky. Pokud je text bez chyby, vrať ho beze změny a changes nech prázdné.`;
+
+let sdkPromise = null;
+async function claudeFix(card, text){
+  const key = apiKey();
+  if (!key) { const e = new Error('nokey'); e.code = 'nokey'; throw e; }
+  sdkPromise = sdkPromise || import(SDK_URL);
+  const { default: Anthropic } = await sdkPromise;
+  // Klíč je uživatelův vlastní a zůstává jen v jeho prohlížeči – proto dangerouslyAllowBrowser.
+  const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true });
+  const response = await client.beta.messages.create({
+    model: MODEL,
+    max_tokens: 4000,
+    betas: ['server-side-fallback-2026-07-01'],
+    fallbacks: 'default',
+    output_config: { effort: 'medium', format: { type: 'json_schema', schema: FIX_SCHEMA } },
+    system: SYSTEM,
+    messages: [{ role: 'user', content: `Fráze z kartičky: ${card.de}\nVýznam: ${card.cz}\n\nMůj text:\n${text}` }],
+  });
+  if (response.stop_reason === 'refusal') throw Object.assign(new Error('refusal'), {code: 'refusal'});
+  if (response.stop_reason === 'max_tokens') throw Object.assign(new Error('max_tokens'), {code: 'other'});
+  const block = response.content.find(b => b.type === 'text');
+  return JSON.parse(block.text);
+}
+function errText(err){
+  if (err.code === 'nokey') return 'Nejdřív zadej svůj Claude API klíč na hlavní stránce v Nastavení.';
+  if (err.code === 'refusal') return 'Claude tuhle kontrolu odmítl. Zkus větu přeformulovat.';
+  const st = err.status;
+  if (st === 401) return 'API klíč nefunguje (401). Zkontroluj ho v Nastavení.';
+  if (st === 400 && /credit/i.test(err.message || '')) return 'Na účtu Claude API došel kredit. Dobij ho na console.anthropic.com.';
+  if (st === 429) return 'Příliš mnoho požadavků najednou (429). Zkus to za chvilku.';
+  if (st >= 500) return 'Služba Claude je teď přetížená nebo nedostupná. Zkus to za chvilku.';
+  if (!navigator.onLine || err.name === 'TypeError' || /fetch|network|import/i.test(err.message || '')) return 'Kontrola potřebuje připojení k internetu.';
+  return 'Kontrola se nepovedla: ' + (err.message || 'neznámá chyba');
+}
+/* jednoduchý rozdíl po slovech pro zvýraznění oprav */
+function wordDiff(a, b){
+  const A = a.split(/(\s+)/), B = b.split(/(\s+)/), n = A.length, m = B.length;
+  const L = Array.from({length: n + 1}, () => new Array(m + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) L[i][j] = A[i] === B[j] ? L[i+1][j+1] + 1 : Math.max(L[i+1][j], L[i][j+1]);
+  let i = 0, j = 0, out = '', del = '', ins = '';
+  const flush = () => { if (del.trim()) out += `<del>${esc(del.trim())}</del> `; if (ins.trim()) out += `<ins>${esc(ins.trim())}</ins> `; del = ins = ''; };
+  while (i < n && j < m) {
+    if (A[i] === B[j]) { flush(); out += esc(A[i]); i++; j++; }
+    else if (L[i+1][j] >= L[i][j+1]) del += A[i++]; else ins += B[j++];
+  }
+  while (i < n) del += A[i++]; while (j < m) ins += B[j++]; flush();
+  return out;
+}
+function mountMine(el, c, editing){
+  const saved = mine()[c.id];
+  let text = '', res = null;
+  function closed(){
+    el.innerHTML = saved
+      ? `<div class="mine-head">✍️ Moje věta</div><div class="mine-saved" lang="de">${esc(saved.t)}</div>
+         <div class="mine-meta">${saved.ok ? '✓ opraveno Claudem' : '⚠ uloženo bez kontroly'} · ${esc(saved.d || '')}</div>
+         <div class="mine-btns"><button class="lnk" data-act="edit">Upravit</button><button class="lnk" data-act="del">Smazat</button></div>`
+      : `<button class="btn2 mine-start" data-act="edit">✍️ Napsat vlastní větu s touto frází</button>`;
+  }
+  function editor(value){
+    el.innerHTML = `<div class="mine-head">✍️ Moje věta s frází <span lang="de">${esc(c.de)}</span></div>
+      <textarea class="mine-ta" lang="de" rows="3" maxlength="600" spellcheck="true" autocapitalize="sentences" placeholder="Napiš 1–3 věty německy…">${esc(value)}</textarea>
+      <div class="mine-btns"><button class="btn mine-btn" data-act="check">Opravit s Claude</button><button class="lnk" data-act="cancel">Zrušit</button></div>
+      <div class="mine-res"></div>`;
+  }
+  function result(){
+    const box = el.querySelector('.mine-res');
+    const ok = res.is_correct || res.corrected.trim() === text;
+    box.innerHTML = (ok
+        ? `<div class="mine-ok">✓ Bez chyby, výborně!</div>`
+        : `<div class="mine-prev" lang="de">${wordDiff(text, res.corrected)}</div>` +
+          res.changes.map(ch => `<div class="iss"><div lang="de"><del>${esc(ch.from)}</del> → <ins>${esc(ch.to)}</ins></div><small>${esc(ch.why)}</small></div>`).join(''))
+      + (res.phrase_ok ? '' : `<div class="mine-err">Fráze z kartičky v textu chybí nebo není použitá správně.</div>`)
+      + (res.note ? `<p class="mine-tip">💡 ${esc(res.note)}</p>` : '')
+      + `<div class="mine-head" style="margin-top:12px">${ok ? 'Tvoje věta' : 'Opravená verze'} (můžeš ji ještě upravit):</div>
+         <textarea class="mine-ta mine-fix" lang="de" rows="3" maxlength="600">${esc(res.corrected)}</textarea>
+         <div class="mine-btns"><button class="btn mine-btn" data-act="save">${ok ? 'Uložit' : 'Uložit opravu'}</button><button class="lnk" data-act="recheck">Zkontrolovat znovu</button></div>`;
+  }
+  async function check(t){
+    t = t.trim().replace(/[ \t]+/g, ' ');
+    if (!t) return toast('Nejdřív napiš větu');
+    text = t; editor(t);
+    const box = el.querySelector('.mine-res'), btn = el.querySelector('[data-act=check]');
+    btn.disabled = true; box.innerHTML = '<p class="mine-note">Claude kontroluje… (pár sekund)</p>';
+    try { res = await claudeFix(c, t); result(); }
+    catch (err) {
+      box.innerHTML = `<div class="mine-err">${esc(errText(err))}</div>
+        <div class="mine-btns"><button class="btn mine-btn" data-act="check">Zkusit znovu</button><button class="lnk" data-act="saveraw">Uložit bez kontroly</button></div>`;
+    }
+    finally { btn.disabled = false; }
+  }
+  function store(t, ok){
+    t = t.trim(); if (!t) return toast('Věta je prázdná');
+    mine()[c.id] = {t, ok, d: new Date().toLocaleDateString('cs-CZ')}; save();
+    mountMine(el, c, false); toast('Věta uložena'); refreshMineCount();
+  }
+  el.onclick = e => {
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    e.stopPropagation();
+    const ta = el.querySelector('.mine-ta:not(.mine-fix)'), fx = el.querySelector('.mine-fix');
+    switch (a.dataset.act) {
+      case 'edit': editor(saved ? saved.t : ''); el.querySelector('.mine-ta').focus(); break;
+      case 'cancel': mountMine(el, c, false); break;
+      case 'check': check(ta ? ta.value : text); break;
+      case 'recheck': check(fx ? fx.value : text); break;
+      case 'save': store(fx ? fx.value : text, true); break;
+      case 'saveraw': store(ta ? ta.value : text, false); break;
+      case 'del': if (confirm('Smazat tvou větu u této karty?')) { delete mine()[c.id]; save(); mountMine(el, c, false); refreshMineCount(); } break;
+    }
+  };
+  editing ? editor(saved ? saved.t : '') : closed();
+}
+function refreshMineCount(){
+  const n = Object.keys(mine()).length;
+  const sp = document.querySelector('#listBtn span'); if (sp) sp.textContent = n ? `${n} ${n===1?'moje věta':n<5?'moje věty':'mých vět'}` : 'hledat';
+}
+function renderKey(){
+  const k = apiKey(), box = $('#keyBox'); if (!box) return;
+  box.innerHTML = k
+    ? `<div class="keyrow"><span>✓ Klíč uložen (…${esc(k.slice(-4))})</span><button class="lnk" id="keyDel">Odebrat</button></div>`
+    : `<input class="search" id="keyIn" type="password" autocomplete="off" placeholder="sk-ant-…" style="margin:0 0 8px">
+       <button class="btn2" id="keySave" style="text-align:center">Uložit klíč</button>`;
+  if (k) $('#keyDel').onclick = () => { if (confirm('Odebrat Claude API klíč z tohoto zařízení?')) { try { localStorage.removeItem(KEY_STORE); } catch(e){} renderKey(); } };
+  else $('#keySave').onclick = () => { const v = $('#keyIn').value.trim(); if (!v.startsWith('sk-ant-')) return toast('Klíč má začínat sk-ant-'); try { localStorage.setItem(KEY_STORE, v); } catch(e){ return toast('Klíč se nepodařilo uložit'); } renderKey(); toast('Klíč uložen'); };
+}
+
 /* ---------- LIST ---------- */
 function renderList(){
   const q = $('#q').value.trim().toLowerCase();
-  const items = CARDS.filter(c => !q || (c.de+' '+c.cz+' '+c.ex+' '+c.n+' '+c.x).toLowerCase().includes(q));
+  const only = $('#onlyMine').checked;
+  const items = CARDS.filter(c => (!only || mine()[c.id]) && (!q || (c.de+' '+c.cz+' '+c.ex+' '+c.n+' '+c.x+' '+(mine()[c.id]?.t||'')).toLowerCase().includes(q)));
   $('#items').innerHTML = items.map(c => {
     const p = S.p[c.id];
     return `<div class="item" style="--cc:${CATS[c.c].c}" data-id="${c.id}">
       <span class="badge">${p ? 'přihr. '+p.b : 'nová'}</span>
-      <div class="de" lang="de">${CATS[c.c].e} ${esc(c.de)}</div>
+      <div class="de" lang="de">${CATS[c.c].e} ${esc(c.de)}${mine()[c.id]?'<span class="mine-ico" title="Moje věta">✍️</span>':''}</div>
       <div class="cz">${esc(c.cz)}</div>
       <div class="exl"><img class="pic" src="${c.id}.jpg" alt="" width="72" height="72" loading="lazy" style="width:72px;height:72px;border-radius:14px;float:left;margin:0 10px 4px 0">
-        <span lang="de">${c.n?esc(c.n)+' · ':''}z. B. ${esc(c.ex)}</span><br>${esc(c.x)}</div></div>`;
-  }).join('') || '<p class="sub center">Nic nenalezeno.</p>';
+        <span lang="de">${c.n?esc(c.n)+' · ':''}z. B. ${esc(c.ex)}</span><br>${esc(c.x)}</div><div class="mine" data-mine="${c.id}"></div></div>`;
+  }).join('') || `<p class="sub center">${only ? 'Zatím nemáš žádnou vlastní větu. Napíšeš ji pod kartičku při učení nebo tady v přehledu.' : 'Nic nenalezeno.'}</p>`;
+  document.querySelectorAll('#items [data-mine]').forEach(el => mountMine(el, CARDS.find(c => c.id === +el.dataset.mine), false));
 }
 $('#q').oninput = renderList;
-$('#items').onclick = e => e.target.closest('.item')?.classList.toggle('open');
+$('#onlyMine').onchange = renderList;
+$('#items').onclick = e => { if (e.target.closest('.mine')) return; e.target.closest('.item')?.classList.toggle('open'); };
 
 /* ---------- NAV ---------- */
 $('#startBtn').onclick = () => startSession(false);
@@ -476,7 +666,7 @@ $('#impFile').onchange = async e => {
   e.target.value = '';
 };
 $('#resetBtn').onclick = () => {
-  if (confirm('Opravdu smazat celý postup a začít od přihrádky 1?')) { const set = S.set; S = fresh(); S.set = set; save(); renderHome(); toast('Postup vynulován'); }
+  if (confirm('Opravdu smazat celý postup a začít od přihrádky 1? Tvoje vlastní věty zůstanou.')) { const set = S.set, m = S.mine; S = fresh(); S.set = set; if (m) S.mine = m; save(); renderHome(); toast('Postup vynulován'); }
 };
 
 renderHome();

@@ -1,5 +1,5 @@
 // Offline cache. Při změně aplikace zvyš verzi.
-const V = 'redemittel-v5';
+const V = 'redemittel-v7';
 const CORE = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png', 'icon-512.png'];
 const IMGS = [
   '1.jpg',
